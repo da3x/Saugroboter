@@ -1,0 +1,14 @@
+# Einzelne Dateien...
+.DS_Store
+.svn
+.project
+.springBeans
+
+# Bestimmte Verzeichnisse...
+**/target/
+**/.settings/
+
+# Keine Klassen und weitere Eclipse spezifische Dateien
+**.class
+**/.classpath
+
