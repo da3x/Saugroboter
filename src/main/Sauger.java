@@ -23,9 +23,7 @@ public class Sauger {
     private final int WENDEWEG     = 5;
     private final int MIN_DISTANCE = 25;
 
-	private final Knopf knopf;
-
-	// Robot Connection
+    private final Knopf                     knopf;
     private final RemoteRequestPilot        pilot;
     private final EasyRequestSampleProvider sample;
     private final EasyRequestSampleProvider sampleIR;
@@ -37,13 +35,13 @@ public class Sauger {
 
     public Sauger(Knopf knopf,
             RemoteRequestPilot pilot,
-            EasyRequestSampleProvider cp,
-            EasyRequestSampleProvider ip,
+            EasyRequestSampleProvider sample,
+            EasyRequestSampleProvider sampleIR,
             Saugbot bot) {
         this.knopf    = knopf;
         this.pilot    = pilot;
-        this.sample   = cp;
-        this.sampleIR = ip;
+        this.sample   = sample;
+        this.sampleIR = sampleIR;
         this.saugbot  = bot;
     }
 

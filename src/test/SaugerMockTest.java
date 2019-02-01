@@ -57,8 +57,10 @@ class SaugerMockTest {
         trace(pilot, "order.verify(pilot).travel(anyDouble());").travel(anyDouble());
         trace(pilot, "order.verify(pilot).rotate(anyDouble());").rotate(anyDouble());
 
-        // NOT USED: trace(sample, "sample.close()").close();
-        // NOT USED: trace(sample, "sample.getSample()").getSample();
+// DOOF: Bei ConstructorInjection kann er die beiden Sample nicht auseinanderhalten
+//       und gibt beiden das gleiche Mock! Man müsste auf FieldInjection verwenden.
+//        trace(sample, "sample.close()").close();
+//        trace(sample, "sample.getSample()").getSample();
         
         trace(sampleIR, "order.verify(sampleIR).close();").close();
         trace(sampleIR, "order.verify(sampleIR).getSample();").getSample();
