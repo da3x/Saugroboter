@@ -31,7 +31,7 @@ class SaugerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		this.knopf = Mockito.mock(Knopf.class);
-		this.sauger = new Sauger(knopf, null, null, null);
+		this.sauger = new Sauger(knopf, null, null, null, null);
 	}
 
 	@AfterEach

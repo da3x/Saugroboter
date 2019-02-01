@@ -15,32 +15,37 @@ public class Sauger {
 	 * * * last change: 03.09.2017 
 	 * * * TODO: + variable for MaxPaths 
 	 * - constants for turning * -
-	 * Erkennung für "Kein Untergrund" 
-	 * - Sensor für Hindernisse und *
+	 * Erkennung fï¿½r "Kein Untergrund" 
+	 * - Sensor fï¿½r Hindernisse und *
 	 * Hindernissumfahrung *
 	 */
 	private final int GRADZAHL = 85;
 	private final int WENDEWEG = 5;
 	private final int MIN_DISTANCE = 25;
 
-	private Knopf knopf;
+	private final Knopf knopf;
 
 	// Robot Connection
-	private RemoteRequestPilot pilot;
-	private EasyRequestSampleProvider sample;
-	private EasyRequestSampleProvider sampleIR;
-	private Saugbot saugbot;
+    private final RemoteRequestPilot        pilot;
+    private final EasyRequestSampleProvider sample;
+    private final EasyRequestSampleProvider sampleIR;
+    private final Saugbot                   saugbot;
 
-	/** private RegulatedMotor motor; **/
+    /** private RegulatedMotor motor; **/
 
-	private boolean stopWeilKeinUntergrundErkannt = false;
-	
-	public Sauger(Knopf knopf, 
-			RemoteRequestPilot pilot, 
-			EasyRequestSampleProvider cp, 
-			EasyRequestSampleProvider ip) {
-		this.knopf = knopf;
-	}
+    private boolean stopWeilKeinUntergrundErkannt = false;
+
+    public Sauger(Knopf knopf,
+            RemoteRequestPilot pilot,
+            EasyRequestSampleProvider cp,
+            EasyRequestSampleProvider ip,
+            Saugbot bot) {
+        this.knopf    = knopf;
+        this.pilot    = pilot;
+        this.sample   = cp;
+        this.sampleIR = ip;
+        this.saugbot  = bot;
+    }
 
 	private String farbenname(int color) {
 		String answer = "";
@@ -74,14 +79,14 @@ public class Sauger {
 			// neue Instanz von EV3 muss erstellt werden:
 			saugbot.createInstance();
 			// Piloten erstellen:
-			// Wird für Bewegungen des Roboters gebraucht
-			pilot = saugbot.createPilot();
+			// Wird fï¿½r Bewegungen des Roboters gebraucht
+//			pilot = saugbot.createPilot();
 			// Gesdchwindigkeit vom Pilot runtersetzen:
 			pilot.setLinearSpeed(15f);
 			// SampleProvider erstellen:
-			// Wird für das Auslesen des Farbsensors gebraucht
-			sample = saugbot.createSampleProviderForColorSensor();
-			sampleIR = saugbot.createSensorModeForInfraredSensor();
+			// Wird fï¿½r das Auslesen des Farbsensors gebraucht
+//			sample = saugbot.createSampleProviderForColorSensor();
+//			sampleIR = saugbot.createSensorModeForInfraredSensor();
 			// Zusatzmotor erstellen:
 			// Wird zum Saugen gebraucht
 			/** motor = saugbot.createMotor('D'); **/
@@ -93,15 +98,15 @@ public class Sauger {
 			// Roboter beenden:
 			end();
 		}
-		// Wird nur erreicht, wenn etwas fehlschlägt:
+		// Wird nur erreicht, wenn etwas fehlschlï¿½gt:
 		return -1;
 	}
 
 	private int end() {
 		/* Schliessen der Roboterverbindung */
 		try {
-			// SampleProvider schließen:
-			// Wird close() nicht ausgeführt, muss der Roboter
+			// SampleProvider schlieï¿½en:
+			// Wird close() nicht ausgefï¿½hrt, muss der Roboter
 			// neu gestartet werden.
 			sample.close();
 		} catch (Exception e) {
@@ -109,8 +114,8 @@ public class Sauger {
 			System.out.println(e.getMessage());
 		}
 		try {
-			// Piloten schließen:
-			// Wird close() nicht ausgeführt, muss der Roboter
+			// Piloten schlieï¿½en:
+			// Wird close() nicht ausgefï¿½hrt, muss der Roboter
 			// neu gestartet werden.
 			pilot.close();
 		} catch (Exception e) {
@@ -118,8 +123,8 @@ public class Sauger {
 			System.out.println(e.getMessage());
 		}
 		try {
-			// Motor schließen:
-			// Wird close() nicht ausgeführt, muss der Roboter
+			// Motor schlieï¿½en:
+			// Wird close() nicht ausgefï¿½hrt, muss der Roboter
 			// neu gestartet werden.
 			/** motor.close(); **/
 		} catch (Exception e) {
@@ -136,12 +141,12 @@ public class Sauger {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		// Wird nur erreicht, wenn etwas fehlschlägt:
+		// Wird nur erreicht, wenn etwas fehlschlï¿½gt:
 		return -1;
 	}
 
 	private void forward() {
-		/* Roboter fährt bis zum Ende des Raums */
+		/* Roboter fï¿½hrt bis zum Ende des Raums */
 		pilot.forward();
 		float gesehen, distance;
 		while (true) {
@@ -225,7 +230,6 @@ public class Sauger {
 
 		int maximale_wege_des_roboters_bevor_stopp = 6;
 
-		saugbot = new Saugbot();
 		if (start() > 0) {
 			
 			knopf.activateReader();
