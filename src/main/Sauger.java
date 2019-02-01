@@ -19,9 +19,9 @@ public class Sauger {
 	 * - Sensor f�r Hindernisse und *
 	 * Hindernissumfahrung *
 	 */
-	private final int GRADZAHL = 85;
-	private final int WENDEWEG = 5;
-	private final int MIN_DISTANCE = 25;
+    private final int GRADZAHL     = 85;
+    private final int WENDEWEG     = 5;
+    private final int MIN_DISTANCE = 25;
 
 	private final Knopf knopf;
 
