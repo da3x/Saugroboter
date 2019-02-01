@@ -24,7 +24,7 @@ import main.Sauger;
 import robot.EasyRequestSampleProvider;
 import robot.Saugbot;
 
-@ExtendWith({ MockitoExtension.class, MyExtension.class} )
+@ExtendWith(MockitoExtension.class)
 class SaugerMockTest {
 
     @Mock
@@ -42,6 +42,7 @@ class SaugerMockTest {
     Sauger sauger;
 
     @Test
+    @ExtendWith(MyExtension.class)
     void testMain() {
 
         // Wir generieren uns erst mal das IST...
