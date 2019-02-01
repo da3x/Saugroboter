@@ -24,7 +24,7 @@ import main.Sauger;
 import robot.EasyRequestSampleProvider;
 import robot.Saugbot;
 
-@ExtendWith(MockitoExtension.class)
+@ExtendWith({ MockitoExtension.class, MyExtension.class} )
 class SaugerMockTest {
 
     @Mock
